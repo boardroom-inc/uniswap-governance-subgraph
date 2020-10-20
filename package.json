@@ -1,6 +1,6 @@
 {
   "name": "uniswap-governance",
-  "license": "UNLICENSED",
+  "license": "",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
