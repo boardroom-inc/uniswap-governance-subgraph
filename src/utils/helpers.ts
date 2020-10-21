@@ -7,7 +7,6 @@ import {
 } from "../../generated/schema";
 import {
   Address,
-  EthereumEvent,
   BigInt,
   Bytes,
   log
@@ -21,7 +20,7 @@ import {
 } from "./constants";
 
 export function getOrCreateTokenHolder(
-  id: String,
+  id: string,
   createIfNotFound: boolean = true,
   save: boolean = true
 ): TokenHolder {
@@ -36,7 +35,7 @@ export function getOrCreateTokenHolder(
 
     if (id != ZERO_ADDRESS) {
       let governance = getGovernanceEntity();
-      governance.totalTokenHolders = governance.totalTokenHolders + BIGINT_ONE;
+      governance.totalTokenHolders = governance.totalTokenHolders.plus(BIGINT_ONE);
       governance.save();
     }
 
@@ -49,7 +48,7 @@ export function getOrCreateTokenHolder(
 }
 
 export function getOrCreateDelegate(
-  id: String,
+  id: string,
   createIfNotFound: boolean = true,
   save: boolean = true
 ): Delegate {
@@ -63,7 +62,7 @@ export function getOrCreateDelegate(
 
     if (id != ZERO_ADDRESS) {
       let governance = getGovernanceEntity();
-      governance.totalDelegates = governance.totalDelegates + BIGINT_ONE;
+      governance.totalDelegates = governance.totalDelegates.plus(BIGINT_ONE);
       governance.save();
     }
 
@@ -76,7 +75,7 @@ export function getOrCreateDelegate(
 }
 
 export function getOrCreateVote(
-  id: String,
+  id: string,
   createIfNotFound: boolean = true,
   save: boolean = false
 ): Vote {
@@ -94,7 +93,7 @@ export function getOrCreateVote(
 }
 
 export function getOrCreateProposal(
-  id: String,
+  id: string,
   createIfNotFound: boolean = true,
   save: boolean = false
 ): Proposal {
@@ -105,7 +104,7 @@ export function getOrCreateProposal(
 
     let governance = getGovernanceEntity();
 
-    governance.proposals = governance.proposals + BIGINT_ONE;
+    governance.proposals = governance.proposals.plus(BIGINT_ONE);
     governance.save();
 
     if (save) {
